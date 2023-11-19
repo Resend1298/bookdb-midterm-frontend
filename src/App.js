@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import SearchInput from './SearchInput';
+import BooksList from './BooksList';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [books, setBooks] = useState([]);
+	const [searchTerm, setSearchTerm] = useState('');
+	const [searchFields, setSearchFields] = useState([]);
+
+	useEffect(() => {
+		const queryParams = new URLSearchParams({
+			search_string: searchTerm, fields: searchFields.join()
+		});
+
+		fetch(`http://127.0.0.1:8000/query_books?${queryParams}`)
+			.then(response => response.json())
+			.then(data => {
+				if (Array.isArray(data)) {
+					setBooks(data);
+				} else {
+					console.error("Received data is not an array:", data);
+					setBooks([]);
+				}
+			})
+			.catch(error => {
+				console.error("Error fetching data: ", error);
+				setBooks([]);
+			});
+	}, [searchTerm, searchFields]);
+
+	const handleSearch = (term, fields) => {
+		setSearchTerm(term);
+		setSearchFields(fields);
+	};
+
+	return (<div className="App">
+		<header className="App-header">
+			<img src="/logo.png" alt="logo"/>
+		</header>
+		<SearchInput onSearch={handleSearch}/>
+		<BooksList books={books}/>
+	</div>);
 }
 
 export default App;

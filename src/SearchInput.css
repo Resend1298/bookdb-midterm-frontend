@@ -1,0 +1,43 @@
+.SearchInput {
+	margin: 20px auto;
+}
+
+.SearchInput label {
+	margin-right: 10px;
+}
+
+.SearchInput input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+.SearchBox {
+	display: flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	border-radius: 100px;
+	padding: 5px 10px;
+	max-width: 500px;
+	margin: auto auto 15px;
+}
+
+.SearchIcon {
+	fill: #666;
+}
+
+.SearchField {
+	border: none;
+	outline: none;
+	padding: 8px 10px;
+	flex-grow: 1;
+	border-radius: 20px;
+	line-height: 1.5;
+	font-size: 16px;
+}
+
+.SearchField::placeholder {
+	color: #999;
+}
+
+.SearchBox:focus-within {
+	border-color: #555;
+}

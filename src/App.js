@@ -13,7 +13,8 @@ function App() {
 			search_string: searchTerm, fields: searchFields.join()
 		});
 
-		fetch(`http://127.0.0.1:8000/query_books?${queryParams}`)
+		// fetch(`http://127.0.0.1:8000/query_books?${queryParams}`)
+		fetch(`/api/query_books?${queryParams}`)
 			.then(response => response.json())
 			.then(data => {
 				if (Array.isArray(data)) {

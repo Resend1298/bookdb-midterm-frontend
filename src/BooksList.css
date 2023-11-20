@@ -5,3 +5,9 @@
 .BookItem {
 	margin-bottom: 15px;
 }
+
+.BookText {
+	margin-left: 30%;
+	text-align: start;
+	max-width: 40%;
+}

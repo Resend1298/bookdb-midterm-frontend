@@ -43,7 +43,7 @@ function SearchInput({onSearch}) {
 					checked={fields.includes('name')}
 					onChange={handleFieldChange}
 				/>
-				Name
+				タイトル
 			</label>
 			<label>
 				<input
@@ -52,7 +52,7 @@ function SearchInput({onSearch}) {
 					checked={fields.includes('author')}
 					onChange={handleFieldChange}
 				/>
-				Author
+				著者
 			</label>
 			<label>
 				<input
@@ -61,7 +61,7 @@ function SearchInput({onSearch}) {
 					checked={fields.includes('publisher')}
 					onChange={handleFieldChange}
 				/>
-				Publisher
+				出版社
 			</label>
 			<label>
 				<input

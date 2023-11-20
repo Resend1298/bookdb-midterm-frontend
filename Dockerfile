@@ -9,3 +9,4 @@ RUN npm run build
 FROM nginx:mainline
 COPY --from=build /frontend/build /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
+LABEL org.opencontainers.image.source=https://github.com/Resend1298/bookdb-midterm-frontend
